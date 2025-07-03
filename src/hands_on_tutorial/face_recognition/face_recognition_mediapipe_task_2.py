@@ -167,6 +167,21 @@ class FaceRecognitionSystem:
                 # The resulting array should have 100 elements (50 landmarks * 2 coordinates).
                 # Iterate through 'key_landmarks_indices', access the corresponding
                 # landmark in 'face_landmarks.landmark', and add its x and y to the array.
+                # Example:
+                # landmarks_vector = []
+                # for idx in key_landmarks_indices:
+                #     # Ensure index is valid
+                #     if idx < len(face_landmarks.landmark):
+                #         landmark = face_landmarks.landmark[idx]
+                #         # Append normalized x and y coordinates
+                #         landmarks_vector.extend([landmark.x, landmark.y])
+                #     else:
+                #         # Handle cases where a landmark index might be out of bounds
+                #         # (should not happen with standard FaceMesh model but good practice)
+                #         landmarks_vector.extend([0.0, 0.0]) # Append placeholders
+
+                # # Convert the list to a NumPy array
+                # landmarks_array = np.array(landmarks_vector)
 
                 # Convert the list to a NumPy array
 
@@ -306,7 +321,12 @@ class FaceRecognitionSystem:
                     continue # Skip this comparison
 
                 # --- TODO 2: Calculate Distance ---
-
+                # Example:
+                # if len(self.feature_weights) == len(landmarks):
+                #     diff = (landmarks - known_landmarks) * self.feature_weights
+                #     distance = np.linalg.norm(diff)
+                # else:
+                #     distance = np.linalg.norm(landmarks - known_landmarks)
                 # --- End TODO 2 ---
 
                 # Check if this distance is the smallest found so far
@@ -330,7 +350,19 @@ class FaceRecognitionSystem:
         # If the distance is greater or equal, the face is unknown ('is_known_face' = False).
         # Return "Unknown", 'is_known_face', and 'confidence'.
         # Optional: Also consider 'self.learning_threshold' for continuous learning decisions later.
+        # Example:
+        # is_known_face = False
+        # name_to_return = "Unknown"
+        # if min_distance < self.recognition_threshold:
+        #     name_to_return = best_match_name
+        #     is_known_face = True
+        # else:
+        #     name_to_return = "Unknown"
+        #     is_known_face = False
+        #     confidence = max(0.0, 1.0 - (min_distance / (self.learning_threshold * 1.5))) # Adjust confidence scaling
 
+        # return name_to_return, is_known_face, confidence
+    
         # --- End TODO 3 ---
 
 
