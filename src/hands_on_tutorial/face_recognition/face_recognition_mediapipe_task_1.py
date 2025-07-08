@@ -119,7 +119,10 @@ class FaceRecognitionSystemTask1: # Renamed class slightly for clarity
             # Use the coordinates 'top', 'right', 'bottom', 'left'.
             # Use the OpenCV function 'cv2.rectangle'.
             # Choose a fixed color (e.g., green) and line thickness for Task 1.
-
+            # Example:
+            # color = (0, 255, 0) # Green color for Task 1
+            # cv2.rectangle(display_frame, (left, top), (right, bottom), color, 2)
+            
             # --- End TODO Task 1.3 ---
 
             # NOTE: Label drawing and button logic (Task 2) are NOT included here.
